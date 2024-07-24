@@ -10,7 +10,21 @@ namespace _Progra123
     {
         static void Main(string[] args)
         {
-         hola
+            int[] serie = new int[] { 5, 4, 6, 8, 9 };
+            int suma = 0;
+            foreach (int num in serie)
+
+            {
+                suma += num;
+
+
+            }
+            decimal prom = suma / serie.Length;
+            Console.WriteLine("La suma es: {0}, el promedio es {1}", suma, prom);
+
+
+            //Pausa.
+            Console.ReadLine();
         }
     }
 }
