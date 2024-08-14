@@ -10,20 +10,33 @@ namespace _Progra123
     {
         static void Main(string[] args)
         {
-            int[] serie = new int[] { 5, 4, 6, 8, 9 };
-            int suma = 0;
-            foreach (int num in serie)
+            //Uso de matrices. Calcular el suelo de una persona.
 
+            double[,] matriz = new double[,] {
+                {0.01,   487.6,  0, 0},
+                {487.61, 642.85, 10,17.48},
+                {642.86, 915.81, 10,32.70},
+                {915.82, 2058.67,20,60.00},
+                {2058.68,9999999,30,288.57},
+            };
+            Console.Write("Sueldo: ");
+            double sueldo = double.Parse(Console.ReadLine()),
+                afp = sueldo * 6.25 / 100,
+                isss = sueldo * 3 / 100,
+                isr = 0;
+            sueldo -= afp;
+
+            for (int i = 0; i < 5; i++)
             {
-                suma += num;
-
-
+                if (sueldo >= matriz[i, 0] && sueldo <= matriz[i, 1])
+                {
+                    isr = (sueldo - (matriz[i, 0] - 0.01)) * matriz[i, 2] / 100 + matriz[i, 3];
+                }
             }
-            decimal prom = suma / serie.Length;
-            Console.WriteLine("La suma es: {0}, el promedio es {1}", suma, prom);
+            sueldo -= isss;
+            sueldo -= isr;
+            Console.WriteLine("Sueldo Neto: {0}, AFP: {1}, ISSS: {2}, ISR: {3}", Math.Round(sueldo, 2), afp, isss, Math.Round(isr, 2));
 
-
-            //Pausa.
             Console.ReadLine();
         }
     }
